@@ -99,12 +99,14 @@ public class Raum {
 
     public void removeVerbraucher(int index){
         alle_verbraucher.remove(index);
+        anzahlVerbraucher = anzahlVerbraucher-1;
     }
 
     public void removeVerbraucher(String name){
         for(int i = 0; i < alle_verbraucher.size(); i++){
             if(alle_verbraucher.get(i).getName().equals(name)){
                 alle_verbraucher.remove(i);
+                anzahlVerbraucher = anzahlVerbraucher-1;
             }
         }
     }

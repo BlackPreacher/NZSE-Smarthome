@@ -1,9 +1,12 @@
 package com.example.bro.smart_home_hda;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -90,6 +93,20 @@ public class MainActivity extends AppCompatActivity {
             //finish();
             try {
                 save_file();
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                alertDialogBuilder.setTitle("Beenden");
+                alertDialogBuilder.setMessage("Möchtest du beenden?")
+                        .setCancelable(false)
+                        .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                System.exit(0);
+                            }
+                        })
+                        .setNegativeButton("Nein",null);
+
+                //AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialogBuilder.create().show();
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (JSONException e) {

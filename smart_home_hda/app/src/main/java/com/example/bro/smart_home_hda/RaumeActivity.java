@@ -68,6 +68,37 @@ public class RaumeActivity extends AppCompatActivity  implements myArrayAdapter.
             }
         });
 
+        listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Object o = listview.getItemAtPosition(position);
+                Raum rap = (Raum) o;
+                final String name = rap.getName();
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                alertDialogBuilder.setTitle("Löschen");
+                alertDialogBuilder.setMessage("Möchtest du diesen eintrag wirklich löschen?")
+                        .setCancelable(false)
+                        .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Haus wohnung = (Haus)getApplicationContext();
+                                wohnung.delete_raum(name);
+                            }
+                        })
+                        .setNegativeButton("Nein", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                return;
+                            }
+                        });
+                alertDialogBuilder.show();
+
+                return true;
+            }
+        });
+
         sw_notaus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -144,6 +144,40 @@ public class Raume_detail extends AppCompatActivity {
             }
         });
 
+        listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Object o = listview.getItemAtPosition(position);
+                Verbraucher wahl = (Verbraucher)o;
+                final String raum = wahl.getRaum_name();
+                final String name = wahl.getName();
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                alertDialogBuilder.setTitle("Löschen");
+                alertDialogBuilder.setMessage("Möchtest du diesen eintrag wirklich löschen?")
+                        .setCancelable(false)
+                        .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Haus wohnung = (Haus)getApplicationContext();
+                                wohnung.delete_verbraucher(raum,name);
+                            }
+                        })
+                        .setNegativeButton("Nein", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                return;
+                            }
+                        });
+
+                //AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialogBuilder.show();
+                ///button_pressed();
+
+                return true;
+            }
+        });
+
         TextView name_view = (TextView)findViewById(R.id.raumname_view);
         final ToggleButton sw_all = (ToggleButton) findViewById(R.id.switch_all);
         Boolean roomstate = false;
@@ -187,6 +221,7 @@ public class Raume_detail extends AppCompatActivity {
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        assert fab != null;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -267,9 +302,6 @@ public class Raume_detail extends AppCompatActivity {
                 && (keyCode == KeyEvent.KEYCODE_BACK)
                 && (event.getRepeatCount() == 0)) {
             Log.d("CDA", "onKeyDown Called");
-            //Toast toast = Toast.makeText(getBaseContext(),keyCode,Toast.LENGTH_SHORT);
-            //toast.show();
-            //finish();
             return_to_parent();
             return true;
         }

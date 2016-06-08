@@ -84,6 +84,18 @@ public class Haus extends Application {
         }
     }
 
+    public void delete_raum(String name){
+        for (int i = 0; i < alle_raume.size(); i++){
+            if(alle_raume.get(i).getName().equals(name)){
+                Raum richtiger_raum = alle_raume.get(i);
+                for(int j = 0; j < richtiger_raum.getAnzahlVerbraucher(); j++){
+                        richtiger_raum.removeVerbraucher(j);
+                }
+                alle_raume.remove(i);
+            }
+        }
+    }
+
     public ArrayList<Raum> get_alle_raume() {
         return alle_raume;
     }
