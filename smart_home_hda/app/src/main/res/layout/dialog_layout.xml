@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dialog_verbraucher_view"
+        android:text="Verbraucher"
+        android:layout_below="@+id/dialog_raum_view"
+        android:layout_alignStart="@+id/dialog_raum_view" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dialog_raum_view"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Raum"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="40dp" />
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dialog_seekBar"
+        android:indeterminate="false"
+        android:max="20"
+        android:layout_below="@+id/dialog_verbraucher_view"
+        android:layout_alignStart="@+id/dialog_verbraucher_view"
+        android:layout_marginStart="48dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="value"
+        android:id="@+id/dialog_value_view"
+        android:layout_alignBottom="@+id/dialog_seekBar"
+        android:layout_alignStart="@+id/dialog_verbraucher_view" />
+
+</RelativeLayout>

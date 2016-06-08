@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.bro.smart_home_hda.add_verbraucher">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Verbraucher hinzufügen zu: "
+        android:id="@+id/titel_view"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="RaumName"
+        android:id="@+id/titel_view_value"
+        android:layout_below="@+id/titel_view"
+        android:layout_alignStart="@+id/titel_view" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_add_verb_name"
+        android:layout_below="@+id/titel_view_value"
+        android:layout_alignStart="@+id/titel_view_value"
+        android:layout_marginTop="39dp"
+        android:layout_alignParentEnd="true"
+        android:hint="Name" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_add_verb_verbrauch"
+        android:layout_below="@+id/edit_add_verb_name"
+        android:layout_marginTop="43dp"
+        android:layout_alignEnd="@+id/edit_add_verb_name"
+        android:layout_alignStart="@+id/edit_add_verb_name"
+        android:hint="Verbrauch" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zustand"
+        android:id="@+id/verbraucher_zustand"
+        android:checked="true"
+        android:layout_below="@+id/zustand_titel_View"
+        android:layout_alignStart="@+id/zustand_titel_View" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Zustand"
+        android:id="@+id/zustand_titel_View"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hinzufügen"
+        android:id="@+id/add_verbraucher_enter_button"
+        android:layout_below="@+id/verbraucher_zustand"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="67dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Schieberegler aktivieren"
+        android:id="@+id/slider_check_dia"
+        android:layout_below="@+id/verbraucher_zustand"
+        android:layout_alignParentStart="true"
+        android:checked="false" />
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/slider"
+        android:layout_below="@+id/slider_check_dia"
+        android:layout_alignParentStart="true"
+        android:max="34"
+        android:indeterminate="false" />
+</RelativeLayout>
