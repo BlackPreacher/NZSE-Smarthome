@@ -95,77 +95,82 @@ public class RaumeActivity extends AppCompatActivity  implements myArrayAdapter.
                         });
                 alertDialogBuilder.show();
 
+                reload();
+
                 return true;
             }
         });
 
-        sw_notaus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Haus wohnung = (Haus) getApplicationContext();
-                ArrayList<Raum> raume = wohnung.get_alle_raume();
-                int anzahl_raume = raume.size();
-                Button notaus_local = (Button) findViewById(v.getId());
-                for(int i = 0; i < anzahl_raume; i++){
-                    raume.get(i).setState(false);
-                    for(int j = 0 ; j < raume.get(i).getAnzahlVerbraucher(); j++){
-                        raume.get(i).get_Verbraucher(j).setState(false);
+        if (sw_notaus != null) {
+            sw_notaus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Haus wohnung = (Haus) getApplicationContext();
+                    ArrayList<Raum> raume = wohnung.get_alle_raume();
+                    int anzahl_raume = raume.size();
+                    Button notaus_local = (Button) findViewById(v.getId());
+                    for(int i = 0; i < anzahl_raume; i++){
+                        raume.get(i).setState(false);
+                        for(int j = 0 ; j < raume.get(i).getAnzahlVerbraucher(); j++){
+                            raume.get(i).get_Verbraucher(j).setState(false);
+                        }
                     }
+                    reload();
                 }
-                reload();
-            }
-        });
-
+            });
+        }
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_raum);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-                dialog.setTitle("Füge Raum hinzu");
-                LayoutInflater inflater = getLayoutInflater();
-                View dialogView = inflater.inflate(R.layout.add_raum_dialog, null);
+        if (fab != null) {
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+                    dialog.setTitle("Füge Raum hinzu");
+                    LayoutInflater inflater = getLayoutInflater();
+                    View dialogView = inflater.inflate(R.layout.add_raum_dialog, null);
 
-                final EditText ed_raum_name = (EditText) dialogView.findViewById(R.id.ed_add_raum_name_diag);
-                //final ToggleButton tb_state = (ToggleButton)dialogView.findViewById(R.id.tgb_add_raum_state);
+                    final EditText ed_raum_name = (EditText) dialogView.findViewById(R.id.ed_add_raum_name_diag);
+                    //final ToggleButton tb_state = (ToggleButton)dialogView.findViewById(R.id.tgb_add_raum_state);
 
 
 
-                dialog.setPositiveButton("Anwenden", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    dialog.setPositiveButton("Anwenden", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
 
-                        if(!ed_raum_name.getText().toString().equals("")) {
+                            if(!ed_raum_name.getText().toString().equals("")) {
 
-                            final String raum_name = ed_raum_name.getText().toString();
-                            final Boolean state = true;
+                                final String raum_name = ed_raum_name.getText().toString();
+                                final Boolean state = true;
 
-                            Haus wohnung = (Haus) getApplicationContext();
-                            ArrayList<Raum> raume = wohnung.get_alle_raume();
-                            wohnung.add_raum(raum_name, state);
+                                Haus wohnung = (Haus) getApplicationContext();
+                                ArrayList<Raum> raume = wohnung.get_alle_raume();
+                                wohnung.add_raum(raum_name, state);
 
-                            Toast toast = Toast.makeText(getBaseContext(), "Verbraucher wurde erfolgreich angelegt!", Toast.LENGTH_SHORT);
-                            toast.show();
-                            reload();
-                        } else {
-                            Toast.makeText(getBaseContext(), "Sorry, du hast keinen Namen vergeben...", Toast.LENGTH_SHORT).show();
+                                Toast toast = Toast.makeText(getBaseContext(), "Verbraucher wurde erfolgreich angelegt!", Toast.LENGTH_SHORT);
+                                toast.show();
+                                reload();
+                            } else {
+                                Toast.makeText(getBaseContext(), "Sorry, du hast keinen Namen vergeben...", Toast.LENGTH_SHORT).show();
 
+                            }
                         }
-                    }
-                });
+                    });
 
-                dialog.setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        return;
-                    }
-                });
+                    dialog.setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            return;
+                        }
+                    });
 
-                dialog.setView(dialogView);
-                dialog.show();
-            }
-        });
+                    dialog.setView(dialogView);
+                    dialog.show();
+                }
+            });
+        }
 
     }
 
@@ -175,6 +180,7 @@ public class RaumeActivity extends AppCompatActivity  implements myArrayAdapter.
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         finish();
         overridePendingTransition(0,0);
+
         startActivity(intent);
     }
 

@@ -174,6 +174,8 @@ public class Raume_detail extends AppCompatActivity {
                 alertDialogBuilder.show();
                 ///button_pressed();
 
+                reload();
+
                 return true;
             }
         });

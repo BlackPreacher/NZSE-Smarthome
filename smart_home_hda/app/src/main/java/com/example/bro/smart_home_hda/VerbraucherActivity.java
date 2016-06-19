@@ -182,6 +182,8 @@ public class VerbraucherActivity extends AppCompatActivity implements myArrayAda
                 alertDialogBuilder.show();
                 ///button_pressed();
 
+                reload();
+
                 return true;
             }
         });
