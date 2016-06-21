@@ -85,6 +85,7 @@ public class RaumeActivity extends AppCompatActivity  implements myArrayAdapter.
                             public void onClick(DialogInterface dialog, int which) {
                                 Haus wohnung = (Haus)getApplicationContext();
                                 wohnung.delete_raum(name);
+                                reload();
                             }
                         })
                         .setNegativeButton("Nein", new DialogInterface.OnClickListener() {
@@ -95,7 +96,7 @@ public class RaumeActivity extends AppCompatActivity  implements myArrayAdapter.
                         });
                 alertDialogBuilder.show();
 
-                reload();
+
 
                 return true;
             }

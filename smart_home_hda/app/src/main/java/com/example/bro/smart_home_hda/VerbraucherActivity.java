@@ -169,6 +169,7 @@ public class VerbraucherActivity extends AppCompatActivity implements myArrayAda
                             public void onClick(DialogInterface dialog, int which) {
                                     Haus wohnung = (Haus)getApplicationContext();
                                     wohnung.delete_verbraucher(raum,name);
+                                    reload();
                                 }
                             })
                         .setNegativeButton("Nein", new DialogInterface.OnClickListener() {
@@ -182,7 +183,7 @@ public class VerbraucherActivity extends AppCompatActivity implements myArrayAda
                 alertDialogBuilder.show();
                 ///button_pressed();
 
-                reload();
+
 
                 return true;
             }
